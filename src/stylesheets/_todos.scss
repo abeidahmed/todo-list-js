@@ -1,33 +1,49 @@
-.default-todos {
-  max-width: 512px;
+.todo-container {
+  max-width: 768px;
+  padding: 0 24px;
   margin: 0 auto;
-  padding: 48px 0;
+}
+
+.todo-table {
   width: 100%;
+  text-align: left;
 }
 
-.todos-title {
-  font-size: 32px;
-  font-weight: 700;
-  
+.table-head {
+  font-weight: 400;
+  color: $gray-700;
+  font-size: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid $gray-200;
+  text-transform: uppercase;
+
+  &.right {
+    text-align: right;
+  }
 }
 
-.todo {
-  display: flex;
-  padding: 15px;
-  border-bottom: 1px solid $gray-300;
-}
+.table-td {
+  font-weight: 400;
+  font-size: 14px;
+  color: $gray-900;
+  padding: 12px 0;
+  border-bottom: 1px solid $gray-200;
+  white-space: nowrap;
 
-.todo .todo-li {
-  margin-right: 50px;
-}
+  &.right {
+    text-align: right;
+  }
 
-.todo img {
-  width: 15px;
-  margin-bottom: 10px;
-  vertical-align: middle;
-  margin-right: 20px;
-}
+  button {
+    background-color: transparent;
+    border: 0;
+    color: $gray-400;
+    cursor: pointer;
+    outline: none;
+    transition: all 150ms ease-in-out;
 
-.todo button {
-  margin-left: 10px;
+    &:hover {
+      color: $gray-500;
+    }
+  }
 }
