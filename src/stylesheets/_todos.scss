@@ -23,6 +23,7 @@
   padding: 12px 0;
   border-bottom: 1px solid $gray-200;
   text-transform: uppercase;
+  line-height: 20px;
 
   &.right {
     text-align: right;
@@ -36,6 +37,7 @@
   padding: 12px 0;
   border-bottom: 1px solid $gray-200;
   white-space: nowrap;
+  line-height: 20px;
 
   &.right {
     text-align: right;
@@ -52,5 +54,15 @@
     &:hover {
       color: $gray-500;
     }
+  }
+}
+
+.todo-checker {
+  display: flex;
+  align-items: center;
+
+  input[type='checkbox'] {
+    margin-right: 8px;
+    display: inline-block;
   }
 }
