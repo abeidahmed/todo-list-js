@@ -1,4 +1,17 @@
 {
+  "name": "todo-list-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "author": {
+    "name": "Abeid Ahmed",
+    "name": "Delice Lydia"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.8",
     "@babel/preset-env": "^7.13.9",
