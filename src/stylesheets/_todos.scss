@@ -39,6 +39,11 @@
   white-space: nowrap;
   line-height: 20px;
 
+  &.checked {
+    text-decoration: line-through;
+    color: $gray-300;
+  }
+
   &.right {
     text-align: right;
   }
