@@ -1,0 +1,39 @@
+.sidebar {
+  width: 16rem;
+  background-color: $teal-50;
+  height: 100vh;
+}
+
+.sidebar-container {
+  padding: 16px 20px;
+}
+
+.sidebar-heading {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: $teal-700;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+
+  button {
+    text-align: left;
+    background: transparent;
+    border: 0;
+    padding: 12px 8px;
+    color: $teal-700;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+
+    &:hover {
+      background-color: $teal-100;
+      color: $teal-800;
+    }
+  }
+}
