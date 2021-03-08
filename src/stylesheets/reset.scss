@@ -23,6 +23,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', 'sans-serif';
+  display: flex;
 }
 
 /**
@@ -355,4 +356,8 @@ template {
 
 [hidden] {
   display: none;
+}
+
+.main-container {
+  flex: 1 1 0%;
 }
