@@ -1,0 +1,33 @@
+.default-todos {
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 48px 0;
+  width: 100%;
+}
+
+.todos-title {
+  font-size: 32px;
+  font-weight: 700;
+  
+}
+
+.todo {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid $gray-300;
+}
+
+.todo .todo-li {
+  margin-right: 50px;
+}
+
+.todo img {
+  width: 15px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.todo button {
+  margin-left: 10px;
+}
