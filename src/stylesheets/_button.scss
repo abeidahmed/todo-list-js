@@ -1,0 +1,49 @@
+.btn-icon {
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+  color: $gray-700;
+  padding: 0;
+  outline: none;
+
+  svg {
+    margin-right: 4px;
+  }
+
+  &:hover {
+    color: $gray-900;
+  }
+}
+
+.btn {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+}
+
+.btn-primary {
+  background-color: $teal-600;
+  color: #fff;
+
+  &:hover {
+    background-color: $teal-700;
+  }
+}
+
+.btn-secondary {
+  background-color: $gray-200;
+  color: $gray-900;
+
+  &:hover {
+    background-color: $gray-300;
+  }
+}

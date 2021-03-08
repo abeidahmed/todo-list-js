@@ -132,6 +132,64 @@
             </tr>
           </tbody>
         </table>
+        <div class="table-footer">
+          <button type="button" class="btn-icon">
+            <svg
+              width="20"
+              height="20"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            Add task
+          </button>
+          <form class="form">
+            <div class="form-body">
+              <input type="text" id="add-todo-title" placeholder="Todo title" />
+            </div>
+            <div class="form-body">
+              <textarea
+                rows="4"
+                id="add-todo-description"
+                placeholder="Description"
+              ></textarea>
+            </div>
+            <div class="form-accessory">
+              <div class="form-flex">
+                <div class="form-control">
+                  <label for="add-todo-date">Due date</label>
+                  <input
+                    type="date"
+                    id="add-todo-date"
+                    class="accessory-control"
+                  />
+                </div>
+                <div class="form-control">
+                  <label for="add-todo-priority">Priority</label>
+                  <select id="add-todo-priority" class="accessory-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-flex">
+                <button type="button" class="btn btn-primary">Publish</button>
+                <button type="button" class="btn btn-secondary">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <script src="./main.js"></script>

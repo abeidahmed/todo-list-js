@@ -207,6 +207,8 @@ button,
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
 }
 
 /**
