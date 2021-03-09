@@ -15,6 +15,8 @@ const updateIsCompleted = (e) => {
   ].todos[todoIndex].isCompleted;
 
   localStorage.setItem('projects', JSON.stringify(dupProjects));
+  // eslint-disable-next-line no-use-before-define
+  renderTodoItem(projectTitle);
 };
 
 const toggleTodoDetail = (event) => {
@@ -66,16 +68,17 @@ const createTodo = (todo, projectTitle) => {
   checkbox.setAttribute('data-title', todo.title);
   checkbox.setAttribute('data-project-title', projectTitle);
 
+  const titleButton = document.createElement('button');
+  titleButton.setAttribute('type', 'button');
+  titleButton.textContent = todo.title;
+
   if (todo.isCompleted) {
     checkbox.setAttribute('checked', 'checked');
+    titleButton.classList.add('checked');
   }
 
   checkbox.addEventListener('change', updateIsCompleted);
   todoTitleContainer.append(checkbox);
-
-  const titleButton = document.createElement('button');
-  titleButton.setAttribute('type', 'button');
-  titleButton.textContent = todo.title;
   todoTitleContainer.append(titleButton);
 
   const todoActionBtns = document.createElement('div');

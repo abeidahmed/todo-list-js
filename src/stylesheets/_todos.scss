@@ -41,6 +41,11 @@
     background-color: transparent;
     outline: none;
     color: $gray-900;
+
+    &.checked {
+      text-decoration: line-through;
+      color: $gray-300;
+    }
   }
 }
 
