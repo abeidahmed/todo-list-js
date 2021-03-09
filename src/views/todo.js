@@ -1,6 +1,26 @@
+const projects = JSON.parse(localStorage.getItem('projects'));
+
+const updateIsCompleted = (e) => {
+  const dupProjects = [...projects];
+  const { projectTitle } = e.target.dataset;
+  const projectIndex = dupProjects.findIndex(
+    (project) => project.title === projectTitle,
+  );
+  const { title } = e.target.dataset;
+  const todoIndex = dupProjects[projectIndex].todos.findIndex(
+    (todo) => todo.title === title,
+  );
+  dupProjects[projectIndex].todos[todoIndex].isCompleted = !dupProjects[
+    projectIndex
+  ].todos[todoIndex].isCompleted;
+
+  localStorage.setItem('projects', JSON.stringify(dupProjects));
+};
+
 const createTodoDetail = (todo) => {
   const container = document.createElement('div');
   container.classList.add('todo-details');
+  container.setAttribute('hidden', '');
 
   const title = document.createElement('div');
   title.textContent = `Title: ${todo.title}`;
@@ -22,7 +42,7 @@ const createTodoDetail = (todo) => {
   return container;
 };
 
-const createTodo = (todo) => {
+const createTodo = (todo, projectTitle) => {
   const todoWrapper = document.createElement('div');
   todoWrapper.classList.add('todo-item-container');
 
@@ -38,6 +58,13 @@ const createTodo = (todo) => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
   checkbox.setAttribute('data-title', todo.title);
+  checkbox.setAttribute('data-project-title', projectTitle);
+
+  if (todo.isCompleted) {
+    checkbox.setAttribute('checked', 'checked');
+  }
+
+  checkbox.addEventListener('change', updateIsCompleted);
   todoTitleContainer.append(checkbox);
 
   const titleButton = document.createElement('button');
@@ -68,14 +95,14 @@ const createTodo = (todo) => {
   return todoWrapper;
 };
 
-const renderTodoItem = (todo) => {
+const renderTodoItem = (projectTitle) => {
   const container = document.getElementById('todo-items');
   const projects = JSON.parse(localStorage.getItem('projects'));
-  const index = projects.findIndex((project) => project.title === todo);
+  const index = projects.findIndex((project) => project.title === projectTitle);
   const { todos } = projects[index];
 
   container.innerHTML = '';
-  todos.forEach((todo) => container.append(createTodo(todo)));
+  todos.forEach((todo) => container.append(createTodo(todo, projectTitle)));
 };
 
 export default renderTodoItem;
