@@ -1,14 +1,20 @@
 import './stylesheets/index.scss';
+import Todo from './models/todo';
 
-const projectNavbar = document.getElementById('projetttctctct-navbar');
-const tableBody = document.getElementById('table-body');
+const projectNavbar = document.getElementById('project-navbar');
 
 const projects = [
   {
     title: 'Coding',
     todos: [
       {
-        title: 'coding',
+        title: 'coding todo 1',
+        description: 'javascript coding challenge',
+        dueDate: '30/03/2021',
+        priority: 2,
+      },
+      {
+        title: 'coding todo 2',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
         priority: 2,
@@ -19,7 +25,7 @@ const projects = [
     title: 'Workout',
     todos: [
       {
-        title: 'coding',
+        title: 'Workout todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
         priority: 2,
@@ -30,7 +36,7 @@ const projects = [
     title: 'Climbing',
     todos: [
       {
-        title: 'coding',
+        title: 'Climbing todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
         priority: 2,
@@ -42,10 +48,22 @@ const projects = [
 class Project {
   // eslint-disable-next-line class-methods-use-this
   listProject(projectName) {
-    const wrapper = document.createElement('button');
-    wrapper.setAttribute('type', 'button');
-    wrapper.textContent = projectName;
-    projectNavbar.append(wrapper);
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-project-title', projectName);
+    button.textContent = projectName;
+
+    button.addEventListener('click', (e) => {
+      const { projectTitle } = e.target.dataset;
+      const projectIndex = projects.findIndex(
+        ({ title }) => title === projectTitle,
+      );
+      const { todos } = projects[projectIndex];
+      const todoInstance = new Todo(todos);
+      todoInstance.listTodos();
+    });
+
+    projectNavbar.append(button);
   }
 }
 
@@ -54,21 +72,3 @@ const project = new Project();
 projects.forEach(({ title }) => {
   project.listProject(title);
 });
-
-class Todo {
-  listTodos() {
-    const tableRow = document.createElement('tr');
-    const tableData1 = document.createElement('td');
-    tableData1.classList.add('table-td');
-    const tableData2 = document.createElement('td');
-    tableData2.classList.add('table-td', 'right');
-    const tableData3 = document.createElement('td');
-    tableData3.classList.add('table-td', 'right');
-    tableRow.append(tableData1);
-    tableRow.append(tableData2);
-    tableRow.append(tableData3);
-    tableBody.append(tableRow);
-  }
-}
-
-const todo = new Todo();
