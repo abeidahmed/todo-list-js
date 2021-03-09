@@ -83,4 +83,5 @@ addTodoForm.addEventListener('submit', (event) => {
 
   todo.addTodo();
   renderTodoItem(activeProjectNow);
+  event.target.reset();
 });
