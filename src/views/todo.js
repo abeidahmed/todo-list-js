@@ -1,6 +1,6 @@
-const projects = JSON.parse(localStorage.getItem('projects'));
-
 const updateIsCompleted = (e) => {
+  const projects = JSON.parse(localStorage.getItem('projects'));
+
   const dupProjects = [...projects];
   const { projectTitle } = e.target.dataset;
   const projectIndex = dupProjects.findIndex(

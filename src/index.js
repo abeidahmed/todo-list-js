@@ -63,7 +63,7 @@ const storeProject = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('projects') === null) {
+  if (!localStorage.getItem('projects')) {
     storeProject();
   }
 
