@@ -4,6 +4,7 @@ export default class Todo {
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.isCompleted = false;
   }
 
   addTodo() {
@@ -17,15 +18,18 @@ export default class Todo {
       description: this.description,
       dueDate: this.dueDate,
       priority: this.priority,
+      isCompleted: this.isCompleted,
     });
 
     localStorage.setItem('projects', JSON.stringify(dupProjects));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   get projects() {
     return JSON.parse(localStorage.getItem('projects'));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   get activeProject() {
     return JSON.parse(localStorage.getItem('activeProject'));
   }

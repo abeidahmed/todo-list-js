@@ -3,6 +3,8 @@ import Todo from './models/todo';
 import renderProjectButton from './views/sidebar';
 import renderTodoItem from './views/todo';
 
+const addTodoFormOpenBtn = document.getElementById('add-todo-form-open');
+const addTodoFormCloseBtn = document.getElementById('add-todo-form-close');
 const addTodoForm = document.getElementById('add-todo-form');
 const todoFormTitle = document.getElementById('add-todo-title');
 const todoFormDescription = document.getElementById('add-todo-description');
@@ -64,14 +66,16 @@ window.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('projects') === null) {
     storeProject();
   }
+
+  const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
+  document
+    .querySelector(`button[data-project-title="${activeProjectNow}"]`)
+    .click();
 });
 
 renderProjectButton();
-const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
-document
-  .querySelector(`button[data-project-title="${activeProjectNow}"]`)
-  .click();
 
+// Create a new todo
 addTodoForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const todo = new Todo(
@@ -82,6 +86,18 @@ addTodoForm.addEventListener('submit', (event) => {
   );
 
   todo.addTodo();
-  renderTodoItem(activeProjectNow);
+  const activeProject = JSON.parse(localStorage.getItem('activeProject'));
+  renderTodoItem(activeProject);
   event.target.reset();
+});
+
+// Toggle todo form
+addTodoFormOpenBtn.addEventListener('click', (event) => {
+  addTodoForm.removeAttribute('hidden');
+  event.target.setAttribute('hidden', '');
+});
+
+addTodoFormCloseBtn.addEventListener('click', () => {
+  addTodoForm.setAttribute('hidden', '');
+  addTodoFormOpenBtn.removeAttribute('hidden');
 });

@@ -28,7 +28,7 @@
         <h1 id="project-main-title">Coding todos</h1>
         <div id="todo-items" class="todo-items"></div>
         <div class="table-footer">
-          <button type="button" class="btn-icon">
+          <button type="button" id="add-todo-form-open" class="btn-icon">
             <svg
               width="20"
               height="20"
@@ -46,7 +46,7 @@
             </svg>
             Add task
           </button>
-          <form id="add-todo-form" class="form">
+          <form id="add-todo-form" class="form" hidden>
             <div class="form-body">
               <input type="text" id="add-todo-title" placeholder="Todo title" />
             </div>
@@ -78,7 +78,13 @@
               </div>
               <div class="form-flex">
                 <button type="submit" class="btn btn-primary">Publish</button>
-                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button
+                  type="button"
+                  id="add-todo-form-close"
+                  class="btn btn-secondary"
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </form>
