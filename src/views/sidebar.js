@@ -1,6 +1,5 @@
 import renderTodoItem from './todo';
 
-const projects = JSON.parse(localStorage.getItem('projects'));
 const pageTitle = document.getElementById('project-main-title');
 
 const createButton = (buttonText) => {
@@ -19,6 +18,7 @@ const createButton = (buttonText) => {
 };
 
 const renderProjectButton = () => {
+  const projects = JSON.parse(localStorage.getItem('projects'));
   const container = document.getElementById('project-navbar');
   projects.forEach((project) => {
     container.append(createButton(project.title));

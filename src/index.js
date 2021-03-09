@@ -67,13 +67,13 @@ window.addEventListener('DOMContentLoaded', () => {
     storeProject();
   }
 
+  renderProjectButton();
+
   const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
   document
     .querySelector(`button[data-project-title="${activeProjectNow}"]`)
     .click();
 });
-
-renderProjectButton();
 
 // Create a new todo
 addTodoForm.addEventListener('submit', (event) => {
