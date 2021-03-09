@@ -1,8 +1,13 @@
 import './stylesheets/index.scss';
+import Todo from './models/todo';
 import renderProjectButton from './views/sidebar';
-// import Todo from './models/todo';
+import renderTodoItem from './views/todo';
 
-const projectNavbar = document.getElementById('project-navbar');
+const addTodoForm = document.getElementById('add-todo-form');
+const todoFormTitle = document.getElementById('add-todo-title');
+const todoFormDescription = document.getElementById('add-todo-description');
+const todoFormDueDate = document.getElementById('add-todo-date');
+const todoFormPriority = document.getElementById('add-todo-priority');
 
 const projects = [
   {
@@ -66,31 +71,16 @@ const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
 document
   .querySelector(`button[data-project-title="${activeProjectNow}"]`)
   .click();
-// class Project {
-// // eslint-disable-next-line class-methods-use-this
-// listProject(projectName) {
-// const button = document.createElement('button');
-// button.setAttribute('type', 'button');
-// button.setAttribute('data-project-title', projectName);
-// button.textContent = projectName;
 
-// button.addEventListener('click', (e) => {
-// const { projectTitle } = e.target.dataset;
-// localStorage.setItem('activeProject', JSON.stringify(projectTitle));
-// const projectIndex = projects.findIndex(
-// ({ title }) => title === projectTitle,
-// );
-// const { todos } = projects[projectIndex];
-// const todoInstance = new Todo(todos);
-// todoInstance.listTodos();
-// });
+addTodoForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const todo = new Todo(
+    todoFormTitle.value,
+    todoFormDescription.value,
+    todoFormDueDate.value,
+    todoFormPriority.value,
+  );
 
-// projectNavbar.append(button);
-// }
-// }
-
-// const project = new Project();
-
-// projects.forEach(({ title }) => {
-// project.listProject(title);
-// });
+  todo.addTodo();
+  renderTodoItem(activeProjectNow);
+});
