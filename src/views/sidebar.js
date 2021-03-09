@@ -9,6 +9,7 @@ const createButton = (buttonText) => {
   button.textContent = buttonText;
 
   button.addEventListener('click', () => {
+    localStorage.setItem('activeProject', JSON.stringify(buttonText));
     renderTodoItem(buttonText);
   });
 

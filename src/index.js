@@ -62,6 +62,10 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 renderProjectButton();
+const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
+document
+  .querySelector(`button[data-project-title="${activeProjectNow}"]`)
+  .click();
 // class Project {
 // // eslint-disable-next-line class-methods-use-this
 // listProject(projectName) {
