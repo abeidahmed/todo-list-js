@@ -55,7 +55,11 @@ const storeProject = () => {
   localStorage.setItem('projects', JSON.stringify(projects));
 };
 
-window.addEventListener('DOMContentLoaded', storeProject);
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('projects') === null) {
+    storeProject();
+  }
+});
 
 renderProjectButton();
 // class Project {
