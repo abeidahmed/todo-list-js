@@ -17,6 +17,12 @@ const updateIsCompleted = (e) => {
   localStorage.setItem('projects', JSON.stringify(dupProjects));
 };
 
+const toggleTodoDetail = (event) => {
+  const parentContainer = event.target.closest('#todo-container');
+  const detailsContainer = parentContainer.querySelector('.todo-details');
+  detailsContainer.toggleAttribute('hidden');
+};
+
 const createTodoDetail = (todo) => {
   const container = document.createElement('div');
   container.classList.add('todo-details');
@@ -44,7 +50,7 @@ const createTodoDetail = (todo) => {
 
 const createTodo = (todo, projectTitle) => {
   const todoWrapper = document.createElement('div');
-  todoWrapper.classList.add('todo-item-container');
+  todoWrapper.setAttribute('id', 'todo-container');
 
   const todoItemContainer = document.createElement('div');
   todoItemContainer.classList.add('todo-item-container');
@@ -91,6 +97,8 @@ const createTodo = (todo, projectTitle) => {
   todoItemContainer.append(todoItem);
   todoWrapper.append(todoItemContainer);
   todoWrapper.append(createTodoDetail(todo));
+
+  titleButton.addEventListener('click', toggleTodoDetail);
 
   return todoWrapper;
 };
