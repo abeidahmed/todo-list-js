@@ -11,13 +11,15 @@ const projects = [
         title: 'coding todo 1',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
-        priority: 2,
+        priority: 'low',
+        isCompleted: false,
       },
       {
         title: 'coding todo 2',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
-        priority: 2,
+        priority: 'high',
+        isCompleted: true,
       },
     ],
   },
@@ -28,7 +30,8 @@ const projects = [
         title: 'Workout todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
-        priority: 2,
+        priority: 'medium',
+        isCompleted: true,
       },
     ],
   },
@@ -39,11 +42,20 @@ const projects = [
         title: 'Climbing todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
-        priority: 2,
+        priority: 'low',
+        isCompleted: false,
       },
     ],
   },
 ];
+
+const storeProject = () => {
+  localStorage.setItem('projects', JSON.stringify(projects));
+};
+
+window.addEventListener('DOMContentLoaded', storeProject);
+
+console.log(JSON.parse(localStorage.getItem('projects')));
 
 class Project {
   // eslint-disable-next-line class-methods-use-this
@@ -58,7 +70,9 @@ class Project {
       const projectIndex = projects.findIndex(
         ({ title }) => title === projectTitle,
       );
-      const { todos } = projects[projectIndex];
+      const { todos } = JSON.parse(localStorage.getItem('projects'))[
+        projectIndex
+      ];
       const todoInstance = new Todo(todos);
       todoInstance.listTodos();
     });
