@@ -89,6 +89,7 @@ addTodoForm.addEventListener('submit', (event) => {
   const activeProject = JSON.parse(localStorage.getItem('activeProject'));
   renderTodoItem(activeProject);
   event.target.reset();
+  event.target.setAttribute('hidden', '');
 });
 
 // Toggle todo form
