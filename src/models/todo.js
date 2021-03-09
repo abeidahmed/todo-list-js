@@ -23,6 +23,21 @@ export default class Todo {
       todoTitle.classList.add('table-td');
       todoTitle.append(titleContainer);
 
+      todoCheckbox.addEventListener('change', (e) => {
+        const parentTr = e.target.closest('tr');
+        const parentTds = parentTr.querySelectorAll('td');
+
+        if (e.target.checked) {
+          parentTds.forEach((td) => {
+            td.classList.add('checked');
+          });
+        } else {
+          parentTds.forEach((td) => {
+            td.classList.remove('checked');
+          });
+        }
+      });
+
       const todoDueDate = document.createElement('td');
       todoDueDate.classList.add('table-td', 'right');
       todoDueDate.textContent = todo.dueDate;
