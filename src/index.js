@@ -1,6 +1,6 @@
 import './stylesheets/index.scss';
 import renderProjectButton from './views/sidebar';
-import Todo from './models/todo';
+// import Todo from './models/todo';
 
 const projectNavbar = document.getElementById('project-navbar');
 
