@@ -25,7 +25,7 @@
         </div>
       </header>
       <div class="todo-container">
-        <h1>Coding todos</h1>
+        <h1 id="project-main-title">Coding todos</h1>
         <div id="todo-items" class="todo-items"></div>
         <div class="table-footer">
           <button type="button" class="btn-icon">
@@ -46,7 +46,7 @@
             </svg>
             Add task
           </button>
-          <form class="form" hidden>
+          <form class="form">
             <div class="form-body">
               <input type="text" id="add-todo-title" placeholder="Todo title" />
             </div>
@@ -70,11 +70,9 @@
                 <div class="form-control">
                   <label for="add-todo-priority">Priority</label>
                   <select id="add-todo-priority" class="accessory-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
                   </select>
                 </div>
               </div>
