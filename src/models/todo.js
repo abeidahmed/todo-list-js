@@ -5,73 +5,55 @@ export default class Todo {
     this.todos = todos;
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  updateTodo(event) {
+    console.log(this.todos);
+  }
+
   listTodos() {
     todoItemParent.innerHTML = '';
 
     this.todos.forEach((todo) => {
-      todoItemParent.innerHTML += `
-        <div class="todo-item-container">
-          <div class="todo-item">
-            <div class="todo-title-container">
-              <input type="checkbox" />
-              <button type="button">${todo.title}</button>
-            </div>
-            <div class="todo-action-btns">
-              <button type="button">Edit</button>
-              <button type="button">Delete</button>
-            </div>
-          </div>
-          <div class="todo-details" hidden>
-            <div>Title: ${todo.title}</div>
-            <div>Due date: ${todo.dueDate}</div>
-            <div>Description: ${todo.description}</div>
-            <div>Priority: ${todo.priority}</div>
-          </div>
-        </div>
-      `;
-      // check on checkbox, we need to update the localstorage's isCompleted
-      // render this HTML (loop) again so that it is updated
+      const todoWrapper = document.createElement('div');
+      todoWrapper.classList.add('todo-item-container');
 
-      // const todoWrapper = document.createElement('div');
-      // todoWrapper.classList.add('todo-item-container');
+      const todoItemContainer = document.createElement('div');
+      todoItemContainer.classList.add('todo-item-container');
 
-      // const todoItemContainer = document.createElement('div');
-      // todoItemContainer.classList.add('todo-item-container');
+      const todoItem = document.createElement('div');
+      todoItem.classList.add('todo-item');
 
-      // const todoItem = document.createElement('div');
-      // todoItem.classList.add('todo-item');
+      const todoTitleContainer = document.createElement('div');
+      todoTitleContainer.classList.add('todo-title-container');
 
-      // const todoTitleContainer = document.createElement('div');
-      // todoTitleContainer.classList.add('todo-title-container');
+      const checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+      checkbox.setAttribute('data-title', todo.title);
+      todoTitleContainer.append(checkbox);
+      checkbox.addEventListener('change', this.updateTodo);
 
-      // const checkbox = document.createElement('input');
-      // checkbox.setAttribute('type', 'checkbox');
-      // todoTitleContainer.append(checkbox);
+      const titleButton = document.createElement('button');
+      titleButton.setAttribute('type', 'button');
+      titleButton.textContent = todo.title;
+      todoTitleContainer.append(titleButton);
 
-      // const titleButton = document.createElement('button');
-      // titleButton.setAttribute('type', 'button');
-      // titleButton.textContent = todo.title;
-      // todoTitleContainer.append(titleButton);
+      const todoActionBtns = document.createElement('div');
+      todoActionBtns.classList.add('todo-action-btns');
 
-      // const todoActionBtns = document.createElement('div');
-      // todoActionBtns.classList.add('todo-action-btns');
+      const editButton = document.createElement('button');
+      editButton.setAttribute('type', 'button');
+      editButton.textContent = 'Edit';
+      todoActionBtns.append(editButton);
 
-      // const editButton = document.createElement('button');
-      // editButton.setAttribute('type', 'button');
-      // editButton.textContent = 'Edit';
-      // todoActionBtns.append(editButton);
+      const deleteButton = document.createElement('button');
+      deleteButton.setAttribute('type', 'button');
+      deleteButton.textContent = 'Delete';
+      todoActionBtns.append(deleteButton);
 
-      // const deleteButton = document.createElement('button');
-      // deleteButton.setAttribute('type', 'button');
-      // deleteButton.textContent = 'Delete';
-      // todoActionBtns.append(deleteButton);
+      todoItem.append(todoTitleContainer);
+      todoItem.append(todoActionBtns);
 
-      // todoItem.append(todoTitleContainer);
-      // todoItem.append(todoActionBtns);
-
-      // todoItemContainer.append(todoItem);
-      // todoItemParent.append(todoItemContainer);
+      todoItemContainer.append(todoItem);
+      todoItemParent.append(todoItemContainer);
 
       // const tableRow = document.createElement('tr');
       // const todoTitle = document.createElement('td');

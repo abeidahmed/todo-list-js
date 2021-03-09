@@ -1,4 +1,5 @@
 import './stylesheets/index.scss';
+import renderProjectButton from './views/sidebar';
 import Todo from './models/todo';
 
 const projectNavbar = document.getElementById('project-navbar');
@@ -50,39 +51,38 @@ const projects = [
 ];
 
 const storeProject = () => {
+  localStorage.setItem('activeProject', JSON.stringify(projects[0].title));
   localStorage.setItem('projects', JSON.stringify(projects));
 };
 
 window.addEventListener('DOMContentLoaded', storeProject);
 
-console.log(JSON.parse(localStorage.getItem('projects')));
+renderProjectButton();
+// class Project {
+// // eslint-disable-next-line class-methods-use-this
+// listProject(projectName) {
+// const button = document.createElement('button');
+// button.setAttribute('type', 'button');
+// button.setAttribute('data-project-title', projectName);
+// button.textContent = projectName;
 
-class Project {
-  // eslint-disable-next-line class-methods-use-this
-  listProject(projectName) {
-    const button = document.createElement('button');
-    button.setAttribute('type', 'button');
-    button.setAttribute('data-project-title', projectName);
-    button.textContent = projectName;
+// button.addEventListener('click', (e) => {
+// const { projectTitle } = e.target.dataset;
+// localStorage.setItem('activeProject', JSON.stringify(projectTitle));
+// const projectIndex = projects.findIndex(
+// ({ title }) => title === projectTitle,
+// );
+// const { todos } = projects[projectIndex];
+// const todoInstance = new Todo(todos);
+// todoInstance.listTodos();
+// });
 
-    button.addEventListener('click', (e) => {
-      const { projectTitle } = e.target.dataset;
-      const projectIndex = projects.findIndex(
-        ({ title }) => title === projectTitle,
-      );
-      const { todos } = JSON.parse(localStorage.getItem('projects'))[
-        projectIndex
-      ];
-      const todoInstance = new Todo(todos);
-      todoInstance.listTodos();
-    });
+// projectNavbar.append(button);
+// }
+// }
 
-    projectNavbar.append(button);
-  }
-}
+// const project = new Project();
 
-const project = new Project();
-
-projects.forEach(({ title }) => {
-  project.listProject(title);
-});
+// projects.forEach(({ title }) => {
+// project.listProject(title);
+// });
