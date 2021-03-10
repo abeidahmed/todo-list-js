@@ -1,4 +1,5 @@
 import Todo from '../models/todo';
+import renderTodoItem from './todo';
 
 const closeModal = (event) => {
   event.target.closest('.modal').setAttribute('hidden', '');
@@ -120,6 +121,9 @@ const todoForm = ({ id, title, description, dueDate, priority }) => {
     };
     const todo = new Todo();
     todo.updateTodo(formValues);
+    event.target.closest('.modal').setAttribute('hidden', '');
+    const project = JSON.parse(localStorage.getItem('activeProject'));
+    renderTodoItem(project);
   });
   cancelButton.addEventListener('click', closeModal);
 
