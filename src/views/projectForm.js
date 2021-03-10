@@ -1,4 +1,3 @@
-
 const sidebarForm = document.getElementById('sidebar-id');
 
 const projectForm = () => {
@@ -13,11 +12,10 @@ const projectForm = () => {
   container.append(formInput);
   container.append(projectButton);
   return container;
-}
+};
 
 const renderProjectForm = () => {
   sidebarForm.append(projectForm());
-
 };
 
 export default renderProjectForm;
