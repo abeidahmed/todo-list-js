@@ -22,7 +22,7 @@ A user can:
 - Webpack
 - HTML
 - Sass
-- active storage
+- Local storage
 
 ## Getting Started
 
