@@ -1,4 +1,5 @@
 import Todo from '../models/todo';
+// eslint-disable-next-line import/no-cycle
 import renderTodoItem from './todo';
 
 const closeModal = (event) => {
@@ -8,7 +9,6 @@ const closeModal = (event) => {
 // eslint-disable-next-line object-curly-newline
 const todoForm = ({ id, title, description, dueDate, priority }) => {
   const form = document.createElement('form');
-  form.setAttribute('id', 'edit-todo-on-demand');
 
   const formTitleContainer = document.createElement('div');
   formTitleContainer.classList.add('form-body');

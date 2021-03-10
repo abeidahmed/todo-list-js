@@ -1,23 +1,10 @@
 import Todo from '../models/todo';
+// eslint-disable-next-line import/no-cycle
 import createModal from './todoForm';
 
-const updateIsCompleted = (e) => {
-  const projects = JSON.parse(localStorage.getItem('projects'));
-
-  const dupProjects = [...projects];
-  const { projectTitle } = e.target.dataset;
-  const projectIndex = dupProjects.findIndex(
-    (project) => project.title === projectTitle,
-  );
-  const { title } = e.target.dataset;
-  const todoIndex = dupProjects[projectIndex].todos.findIndex(
-    (todo) => todo.title === title,
-  );
-  dupProjects[projectIndex].todos[todoIndex].isCompleted = !dupProjects[
-    projectIndex
-  ].todos[todoIndex].isCompleted;
-
-  localStorage.setItem('projects', JSON.stringify(dupProjects));
+const updateIsCompleted = (event) => {
+  const { projectTitle, id } = event.target.dataset;
+  new Todo().toggleIsComplete(id);
   // eslint-disable-next-line no-use-before-define
   renderTodoItem(projectTitle);
 };
@@ -76,6 +63,7 @@ const createTodo = (todo, projectTitle) => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
   checkbox.setAttribute('data-title', todo.title);
+  checkbox.setAttribute('data-id', todo.id);
   checkbox.setAttribute('data-project-title', projectTitle);
 
   const titleButton = document.createElement('button');

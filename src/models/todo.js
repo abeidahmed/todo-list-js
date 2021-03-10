@@ -65,6 +65,16 @@ export default class Todo {
     localStorage.setItem('projects', JSON.stringify(dupProjects));
   }
 
+  toggleIsComplete(id) {
+    const { todos, projectIndex, dupProjects } = this.todos;
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+    dupProjects[projectIndex].todos[todoIndex].isCompleted = !dupProjects[
+      projectIndex
+    ].todos[todoIndex].isCompleted;
+
+    localStorage.setItem('projects', JSON.stringify(dupProjects));
+  }
+
   get todos() {
     const dupProjects = [...this.projects];
     const projectIndex = dupProjects.findIndex(
