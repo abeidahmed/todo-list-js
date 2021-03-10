@@ -45,7 +45,7 @@ export default class Todo {
     const todo = todos[todoIndex];
     const newTodo = {
       title: title.length ? title : todo.title,
-      description: description.length ? description : todo.desscription,
+      description: description.length ? description : todo.description,
       dueDate: dueDate.length ? dueDate : todo.dueDate,
       priority: priority.length ? priority : todo.priority,
     };
