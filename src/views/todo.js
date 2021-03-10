@@ -1,4 +1,5 @@
 import Todo from '../models/todo';
+import createModal from './todoForm';
 
 const updateIsCompleted = (e) => {
   const projects = JSON.parse(localStorage.getItem('projects'));
@@ -112,8 +113,14 @@ const createTodo = (todo, projectTitle) => {
   todoItemContainer.append(todoItem);
   todoWrapper.append(todoItemContainer);
   todoWrapper.append(createTodoDetail(todo));
+  todoWrapper.append(createModal());
 
   titleButton.addEventListener('click', toggleTodoDetail);
+  editButton.addEventListener('click', (event) => {
+    const parentContainer = event.target.closest('#todo-container');
+    const modalRoot = parentContainer.querySelector('.modal');
+    modalRoot.removeAttribute('hidden');
+  });
 
   return todoWrapper;
 };
