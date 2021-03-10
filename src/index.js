@@ -2,6 +2,7 @@ import './stylesheets/index.scss';
 import Todo from './models/todo';
 import renderProjectButton from './views/sidebar';
 import renderTodoItem from './views/todo';
+import renderProjectForm from './views/projectForm';
 
 const addTodoFormOpenBtn = document.getElementById('add-todo-form-open');
 const addTodoFormCloseBtn = document.getElementById('add-todo-form-close');
@@ -68,6 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   renderProjectButton();
+  renderProjectForm();
 
   const activeProjectNow = JSON.parse(localStorage.getItem('activeProject'));
   document
