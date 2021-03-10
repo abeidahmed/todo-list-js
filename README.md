@@ -67,7 +67,7 @@ A user can:
 - Create a new branch: `git checkout -b awesome branch`
 - Add your changes and commit the file
 - Push to your forked repo
-- Make a pull request to `develop` branch
+- Make a pull request to `development` branch
 
 ## Show your support
 

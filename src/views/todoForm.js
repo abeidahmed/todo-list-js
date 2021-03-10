@@ -6,8 +6,9 @@ const closeModal = (event) => {
   event.target.closest('.modal').setAttribute('hidden', '');
 };
 
-// eslint-disable-next-line object-curly-newline
-const todoForm = ({ id, title, description, dueDate, priority }) => {
+const todoForm = ({
+  id, title, description, dueDate, priority,
+}) => {
   const form = document.createElement('form');
 
   const formTitleContainer = document.createElement('div');
