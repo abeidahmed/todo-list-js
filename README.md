@@ -46,3 +46,31 @@ A user can:
 * Go to the browser and enter 
     ```http://127.0.0.1:5500/dist/index.html``` and you are now able to visit the app
 
+## Author
+
+👤 **Delice Lydia**
+  - GitHub: [Delice Lydia](https://github.com/DeliceLydia)
+  - Twitter: [Delice](https://twitter.com/IngabireLydia3)
+  - LinkedIn: [Delice Lydia](https://www.linkedin.com/in/delice-lydia/)
+
+👤 **Abeid Ahmed**
+
+- GitHub: [abeidahmed](https://github.com/abeidahmed)
+- Twitter: [iamhawaabi](https://twitter.com/iamhawaabi)
+- LinkedIn: [Abeid Ahmed](https://www.linkedin.com/in/abeidahmed)
+
+## Contribution
+
+- Clone the repo using the above instructions
+- Create a new branch: `git checkout -b awesome branch`
+- Add your changes and commit the file
+- Push to your forked repo
+- Make a pull request to `develop` branch
+
+## Show your support
+
+Give a ⭐️ if you like 
+
+## License
+
+This project is [MIT](https://github.com/abeidahmed/todo-list-js/blob/master/LICENSE) licensed.
