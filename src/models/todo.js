@@ -1,5 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export default class Todo {
   constructor(title = '', description = '', dueDate = '', priority = '') {
+    this.id = uuidv4();
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -18,6 +21,7 @@ export default class Todo {
     }
 
     todos.push({
+      id: this.id,
       title: this.title,
       description: this.description,
       dueDate: this.dueDate,
@@ -29,20 +33,21 @@ export default class Todo {
     return true;
   }
 
-  updateTodo() {
+  updateTodo({
+    id,
+    title = '',
+    description = '',
+    priority = '',
+    dueDate = '',
+  }) {
     const { todos, projectIndex, dupProjects } = this.todos;
-    const todoIndex = todos.findIndex((todo) => todo.title === this.title);
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
     const todo = todos[todoIndex];
     const newTodo = {
-      title: this.title.length ? this.title : todo.title,
-      description: this.description.length
-        ? this.description
-        : todo.desscription,
-      dueDate: this.dueDate.length ? this.dueDate : todo.dueDate,
-      priority: this.priority.length ? this.priority : todo.priority,
-      isCompleted: this.isCompleted.length
-        ? this.isCompleted
-        : todo.isCompleted,
+      title: title.length ? title : todo.title,
+      description: description.length ? description : todo.desscription,
+      dueDate: dueDate.length ? dueDate : todo.dueDate,
+      priority: priority.length ? priority : todo.priority,
     };
 
     const dupTodos = [...todos];

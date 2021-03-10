@@ -1,4 +1,5 @@
 import './stylesheets/index.scss';
+import { v4 as uuidv4 } from 'uuid';
 import Todo from './models/todo';
 import renderProjectButton from './views/sidebar';
 import renderTodoItem from './views/todo';
@@ -17,6 +18,7 @@ const projects = [
     title: 'Coding',
     todos: [
       {
+        id: uuidv4(),
         title: 'coding todo 1',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
@@ -24,6 +26,7 @@ const projects = [
         isCompleted: false,
       },
       {
+        id: uuidv4(),
         title: 'coding todo 2',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
@@ -36,6 +39,7 @@ const projects = [
     title: 'Workout',
     todos: [
       {
+        id: uuidv4(),
         title: 'Workout todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',
@@ -48,6 +52,7 @@ const projects = [
     title: 'Climbing',
     todos: [
       {
+        id: uuidv4(),
         title: 'Climbing todo',
         description: 'javascript coding challenge',
         dueDate: '30/03/2021',

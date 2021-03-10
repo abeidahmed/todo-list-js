@@ -1,9 +1,11 @@
+import Todo from '../models/todo';
+
 const closeModal = (event) => {
   event.target.closest('.modal').setAttribute('hidden', '');
 };
 
 // eslint-disable-next-line object-curly-newline
-const todoForm = ({ title, description, dueDate, priority }) => {
+const todoForm = ({ id, title, description, dueDate, priority }) => {
   const form = document.createElement('form');
   form.setAttribute('id', 'edit-todo-on-demand');
 
@@ -107,6 +109,18 @@ const todoForm = ({ title, description, dueDate, priority }) => {
   form.append(formDescriptionContainer);
   form.append(formAccessory);
 
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formValues = {
+      id,
+      title: titleInput.value,
+      description: descriptionInput.value,
+      priority: prioritySelect.value,
+      dueDate: dueDateInput.value,
+    };
+    const todo = new Todo();
+    todo.updateTodo(formValues);
+  });
   cancelButton.addEventListener('click', closeModal);
 
   return form;
