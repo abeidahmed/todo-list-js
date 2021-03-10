@@ -20,6 +20,29 @@ export default class Todo {
     localStorage.setItem('projects', JSON.stringify(dupProjects));
   }
 
+  updateTodo() {
+    const { todos, projectIndex, dupProjects } = this.todos;
+    const todoIndex = todos.findIndex((todo) => todo.title === this.title);
+    const todo = todos[todoIndex];
+    const newTodo = {
+      title: this.title.length ? this.title : todo.title,
+      description: this.description.length
+        ? this.description
+        : todo.desscription,
+      dueDate: this.dueDate.length ? this.dueDate : todo.dueDate,
+      priority: this.priority.length ? this.priority : todo.priority,
+      isCompleted: this.isCompleted.length
+        ? this.isCompleted
+        : todo.isCompleted,
+    };
+
+    const dupTodos = [...todos];
+    dupTodos.splice(todoIndex, 1, newTodo);
+    dupProjects[projectIndex].todos = dupTodos;
+
+    localStorage.setItem('projects', JSON.stringify(dupProjects));
+  }
+
   deleteTodo(title) {
     const { todos, projectIndex, dupProjects } = this.todos;
     const dupTodos = todos.filter((todo) => todo.title !== title);
