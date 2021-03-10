@@ -9,6 +9,14 @@ export default class Todo {
 
   addTodo() {
     const { todos, dupProjects } = this.todos;
+    if (
+      todos.some(
+        ({ title }) => title.toLowerCase() === this.title.toLowerCase(),
+      )
+    ) {
+      return false;
+    }
+
     todos.push({
       title: this.title,
       description: this.description,
@@ -18,6 +26,7 @@ export default class Todo {
     });
 
     localStorage.setItem('projects', JSON.stringify(dupProjects));
+    return true;
   }
 
   updateTodo() {
