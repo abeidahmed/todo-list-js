@@ -8,11 +8,7 @@ export default class Todo {
   }
 
   addTodo() {
-    const dupProjects = [...this.projects];
-    const projectIndex = dupProjects.findIndex(
-      (project) => project.title === this.activeProject,
-    );
-    const { todos } = dupProjects[projectIndex];
+    const { todos, dupProjects } = this.todos;
     todos.push({
       title: this.title,
       description: this.description,
@@ -25,16 +21,21 @@ export default class Todo {
   }
 
   deleteTodo(title) {
-    let dupTodos = [];
+    const { todos, projectIndex, dupProjects } = this.todos;
+    const dupTodos = todos.filter((todo) => todo.title !== title);
+    dupProjects[projectIndex].todos = dupTodos;
+
+    localStorage.setItem('projects', JSON.stringify(dupProjects));
+  }
+
+  get todos() {
     const dupProjects = [...this.projects];
     const projectIndex = dupProjects.findIndex(
       (project) => project.title === this.activeProject,
     );
     const { todos } = dupProjects[projectIndex];
-    dupTodos = todos.filter((todo) => todo.title !== title);
-    dupProjects[projectIndex].todos = dupTodos;
 
-    localStorage.setItem('projects', JSON.stringify(dupProjects));
+    return { todos, projectIndex, dupProjects };
   }
 
   // eslint-disable-next-line class-methods-use-this
