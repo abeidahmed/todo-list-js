@@ -113,7 +113,7 @@ const createTodo = (todo, projectTitle) => {
   todoItemContainer.append(todoItem);
   todoWrapper.append(todoItemContainer);
   todoWrapper.append(createTodoDetail(todo));
-  todoWrapper.append(createModal());
+  todoWrapper.append(createModal(todo));
 
   titleButton.addEventListener('click', toggleTodoDetail);
   editButton.addEventListener('click', (event) => {

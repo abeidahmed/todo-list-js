@@ -2,7 +2,8 @@ const closeModal = (event) => {
   event.target.closest('.modal').setAttribute('hidden', '');
 };
 
-const todoForm = () => {
+// eslint-disable-next-line object-curly-newline
+const todoForm = ({ title, description, dueDate, priority }) => {
   const form = document.createElement('form');
   form.setAttribute('id', 'edit-todo-on-demand');
 
@@ -12,6 +13,7 @@ const todoForm = () => {
   const titleInput = document.createElement('input');
   titleInput.setAttribute('type', 'text');
   titleInput.setAttribute('placeholder', 'Add your todo title');
+  titleInput.setAttribute('value', title);
   formTitleContainer.append(titleInput);
 
   const formDescriptionContainer = document.createElement('div');
@@ -20,6 +22,7 @@ const todoForm = () => {
   const descriptionInput = document.createElement('textarea');
   descriptionInput.setAttribute('rows', 4);
   descriptionInput.setAttribute('placeholder', 'Add your todo description');
+  descriptionInput.textContent = description;
   formDescriptionContainer.append(descriptionInput);
 
   const formAccessory = document.createElement('div');
@@ -36,6 +39,7 @@ const todoForm = () => {
 
   const dueDateInput = document.createElement('input');
   dueDateInput.setAttribute('type', 'date');
+  dueDateInput.setAttribute('value', dueDate);
   dueDateInput.classList.add('accessory-control');
 
   dueDateContainer.append(dueDateLabel);
@@ -53,16 +57,25 @@ const todoForm = () => {
   const lowOption = document.createElement('option');
   lowOption.value = 'low';
   lowOption.textContent = 'Low';
+  if (priority.toLowerCase() === 'low') {
+    lowOption.setAttribute('selected', '');
+  }
   prioritySelect.append(lowOption);
 
   const mediumOption = document.createElement('option');
   mediumOption.value = 'medium';
   mediumOption.textContent = 'Medium';
+  if (priority.toLowerCase() === 'medium') {
+    mediumOption.setAttribute('selected', '');
+  }
   prioritySelect.append(mediumOption);
 
   const highOption = document.createElement('option');
   highOption.value = 'high';
   highOption.textContent = 'High';
+  if (priority.toLowerCase() === 'high') {
+    highOption.setAttribute('selected', '');
+  }
   prioritySelect.append(highOption);
 
   priorityContainer.append(priorityLabel);
@@ -99,7 +112,7 @@ const todoForm = () => {
   return form;
 };
 
-const createModal = () => {
+const createModal = (todo) => {
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modal');
   modalContainer.setAttribute('hidden', '');
@@ -110,7 +123,7 @@ const createModal = () => {
 
   const modalBody = document.createElement('div');
   modalBody.classList.add('modal-body');
-  modalBody.append(todoForm());
+  modalBody.append(todoForm(todo));
 
   modalContainer.append(modalBody);
   modalOverlay.addEventListener('click', closeModal);
