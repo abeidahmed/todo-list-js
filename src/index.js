@@ -90,6 +90,7 @@ addTodoForm.addEventListener('submit', (event) => {
   renderTodoItem(activeProject);
   event.target.reset();
   event.target.setAttribute('hidden', '');
+  addTodoFormOpenBtn.removeAttribute('hidden');
 });
 
 // Toggle todo form

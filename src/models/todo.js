@@ -24,6 +24,19 @@ export default class Todo {
     localStorage.setItem('projects', JSON.stringify(dupProjects));
   }
 
+  deleteTodo(title) {
+    let dupTodos = [];
+    const dupProjects = [...this.projects];
+    const projectIndex = dupProjects.findIndex(
+      (project) => project.title === this.activeProject,
+    );
+    const { todos } = dupProjects[projectIndex];
+    dupTodos = todos.filter((todo) => todo.title !== title);
+    dupProjects[projectIndex].todos = dupTodos;
+
+    localStorage.setItem('projects', JSON.stringify(dupProjects));
+  }
+
   // eslint-disable-next-line class-methods-use-this
   get projects() {
     return JSON.parse(localStorage.getItem('projects'));

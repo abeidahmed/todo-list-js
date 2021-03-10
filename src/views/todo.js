@@ -1,3 +1,5 @@
+import Todo from '../models/todo';
+
 const updateIsCompleted = (e) => {
   const projects = JSON.parse(localStorage.getItem('projects'));
 
@@ -15,6 +17,13 @@ const updateIsCompleted = (e) => {
   ].todos[todoIndex].isCompleted;
 
   localStorage.setItem('projects', JSON.stringify(dupProjects));
+  // eslint-disable-next-line no-use-before-define
+  renderTodoItem(projectTitle);
+};
+
+const deleteTodo = (event) => {
+  const { title, projectTitle } = event.target.dataset;
+  new Todo().deleteTodo(title);
   // eslint-disable-next-line no-use-before-define
   renderTodoItem(projectTitle);
 };
@@ -91,8 +100,11 @@ const createTodo = (todo, projectTitle) => {
 
   const deleteButton = document.createElement('button');
   deleteButton.setAttribute('type', 'button');
+  deleteButton.setAttribute('data-title', todo.title);
+  deleteButton.setAttribute('data-project-title', projectTitle);
   deleteButton.textContent = 'Delete';
   todoActionBtns.append(deleteButton);
+  deleteButton.addEventListener('click', deleteTodo);
 
   todoItem.append(todoTitleContainer);
   todoItem.append(todoActionBtns);
