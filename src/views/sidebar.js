@@ -20,6 +20,7 @@ const createButton = (buttonText) => {
 const renderProjectButton = () => {
   const projects = JSON.parse(localStorage.getItem('projects'));
   const container = document.getElementById('project-navbar');
+  container.innerHTML = '';
   projects.forEach((project) => {
     container.append(createButton(project.title));
   });
