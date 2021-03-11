@@ -1,0 +1,61 @@
+.form {
+  width: 100%;
+  border: 1px solid $gray-300;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+}
+
+.form-body {
+  input,
+  textarea {
+    width: 100%;
+    display: block;
+    padding: 8px 0;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+.form-accessory {
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.form-flex {
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: 12px;
+  }
+}
+
+.form-control {
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: $gray-700;
+  }
+}
+
+.accessory-control {
+  width: 156px;
+  border: 1px solid $teal-300;
+  background-color: #fff;
+  height: 32px;
+  outline: none;
+  border-radius: 6px;
+
+  &:focus {
+    box-shadow: 0 0 5px $teal-700;
+  }
+}

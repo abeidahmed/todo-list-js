@@ -1,0 +1,82 @@
+.todo-container {
+  max-width: 768px;
+  padding: 16px 24px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 900;
+    color: $gray-700;
+  }
+}
+
+.todo-items {
+  margin: 24px 0;
+
+  > * + * {
+    border-top: 1px solid $gray-200;
+  }
+}
+
+.todo-item-container {
+  padding: 8px 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-title-container {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0%;
+
+  button {
+    flex: 1 1 0%;
+    text-align: left;
+    margin-left: 6px;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    color: $gray-900;
+
+    &.checked {
+      text-decoration: line-through;
+      color: $gray-300;
+    }
+  }
+}
+
+.todo-action-btns {
+  display: flex;
+  align-items: center;
+
+  > * + * {
+    margin-left: 8px;
+  }
+
+  button {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    color: $gray-700;
+    font-size: 14px;
+  }
+}
+
+.todo-details {
+  border: 1px solid $gray-200;
+  padding: 0 12px 12px 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  > div {
+    grid-column: span 1 / span 1;
+    color: $gray-500;
+    margin-top: 12px;
+  }
+}
