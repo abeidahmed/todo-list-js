@@ -1,25 +1,5 @@
 import Todo from './todo';
-
-const projects = [
-  {
-    title: 'Coding',
-    todos: [
-      {
-        id: 1,
-        title: 'coding todo 1',
-        description: 'javascript coding challenge',
-        dueDate: '2021-03-04',
-        priority: 'low',
-        isCompleted: false,
-      },
-    ],
-  },
-];
-
-const initializeTodo = ({ activeProject = 'Coding', projects }) => {
-  localStorage.setItem('activeProject', JSON.stringify(activeProject));
-  localStorage.setItem('projects', JSON.stringify(projects));
-};
+import { projects, initializeProject } from '../utils/testHelpers';
 
 afterEach(() => {
   localStorage.removeItem('activeProject');
@@ -27,7 +7,7 @@ afterEach(() => {
 });
 
 test('adds todo to localStorage', () => {
-  initializeTodo({ projects });
+  initializeProject({ projects });
   const todo = new Todo(
     'Todo',
     'This should be completed',
@@ -39,7 +19,7 @@ test('adds todo to localStorage', () => {
 });
 
 test('does not add todo if todo is already present', () => {
-  initializeTodo({ projects });
+  initializeProject({ projects });
   const todo = new Todo(
     'coding todo 1',
     'This should be completed',
@@ -51,7 +31,7 @@ test('does not add todo if todo is already present', () => {
 });
 
 test('it deletes the todo from the localStorage', () => {
-  initializeTodo({ projects });
+  initializeProject({ projects });
   const todo = new Todo();
   todo.deleteTodo('coding todo 1');
 
@@ -60,7 +40,7 @@ test('it deletes the todo from the localStorage', () => {
 });
 
 test('it should update the todo from the localStorage', () => {
-  initializeTodo({ projects });
+  initializeProject({ projects });
   const todo = new Todo();
   todo.updateTodo({ id: 1, title: 'coding todo2' });
   const localTodos = JSON.parse(localStorage.getItem('projects'))[0].todos;
@@ -68,7 +48,7 @@ test('it should update the todo from the localStorage', () => {
 });
 
 test('it should toggle is complete the todo from the localStorage', () => {
-  initializeTodo({ projects });
+  initializeProject({ projects });
   const todo = new Todo();
   todo.toggleIsComplete(1);
   const localTodos = JSON.parse(localStorage.getItem('projects'))[0].todos;

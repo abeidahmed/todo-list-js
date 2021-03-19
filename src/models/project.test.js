@@ -1,25 +1,5 @@
 import Project from './project';
-
-const projects = [
-  {
-    title: 'Coding',
-    todos: [
-      {
-        id: 1,
-        title: 'coding todo 1',
-        description: 'javascript coding challenge',
-        dueDate: '2021-03-04',
-        priority: 'low',
-        isCompleted: false,
-      },
-    ],
-  },
-];
-
-const initializeProject = ({ activeProject = 'Coding', projects }) => {
-  localStorage.setItem('activeProject', JSON.stringify(activeProject));
-  localStorage.setItem('projects', JSON.stringify(projects));
-};
+import { projects, initializeProject } from '../utils/testHelpers';
 
 afterEach(() => {
   localStorage.removeItem('activeProject');
@@ -32,7 +12,7 @@ test('it adds the project to the localStorage', () => {
   project.addProject();
   const updatedProjects = JSON.parse(localStorage.getItem('projects'));
 
-  expect(updatedProjects.length).toBe(2);
+  expect(updatedProjects.length).toBe(3);
 });
 
 test('it initializes the todos to the added project', () => {
@@ -41,5 +21,5 @@ test('it initializes the todos to the added project', () => {
   project.addProject();
   const addedProject = JSON.parse(localStorage.getItem('projects'))[1];
 
-  expect(addedProject.todos.length).toBe(0);
+  expect(addedProject.todos.length).toBe(1);
 });

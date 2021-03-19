@@ -1,25 +1,5 @@
 import renderProjectButton from './sidebar';
-
-const projects = [
-  {
-    title: 'Coding',
-    todos: [
-      {
-        id: 1,
-        title: 'coding todo 1',
-        description: 'javascript coding challenge',
-        dueDate: '2021-03-04',
-        priority: 'low',
-        isCompleted: false,
-      },
-    ],
-  },
-];
-
-const initializeProject = ({ activeProject = 'Coding', projects }) => {
-  localStorage.setItem('activeProject', JSON.stringify(activeProject));
-  localStorage.setItem('projects', JSON.stringify(projects));
-};
+import { projects, initializeProject } from '../utils/testHelpers';
 
 afterEach(() => {
   localStorage.removeItem('activeProject');
@@ -35,5 +15,5 @@ test('it lists all the projects in the sidebar', () => {
   const container = document.getElementById('project-navbar');
   const buttons = container.querySelectorAll('button');
 
-  expect(buttons.length).toBe(1);
+  expect(buttons.length).toBe(2);
 });
