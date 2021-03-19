@@ -27,12 +27,13 @@ afterEach(() => {
 });
 
 test('it lists all the projects in the sidebar', () => {
-  document.body.innerHTML =
-    '<nav id="project-navbar" class="sidebar-navigation"></nav>';
-
+  document.body.innerHTML = `
+    <nav id="project-navbar" class="sidebar-navigation"></nav>
+  `;
   initializeProject({ projects });
   renderProjectButton();
   const container = document.getElementById('project-navbar');
   const buttons = container.querySelectorAll('button');
+
   expect(buttons.length).toBe(1);
 });
