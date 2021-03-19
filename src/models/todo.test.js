@@ -60,14 +60,14 @@ test('it deletes the todo from the localStorage', () => {
 });
 
 test('it should update the todo from the localStorage', () => {
-  initializeTodo({projects});
+  initializeTodo({ projects });
   const todo = new Todo();
   todo.updateTodo({ id: 1, title: 'coding todo2' });
   const localTodos = JSON.parse(localStorage.getItem('projects'))[0].todos;
   expect(localTodos[0].title).toBe('coding todo2');
 });
 
-test('it should toggle is complete the todo from the localStorage', ()=> {
+test('it should toggle is complete the todo from the localStorage', () => {
   initializeTodo({ projects });
   const todo = new Todo();
   todo.toggleIsComplete(1);
