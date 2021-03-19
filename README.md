@@ -28,6 +28,14 @@ A user can:
 - Sass
 - Local storage
 
+## Tested With
+
+- Jest
+
+When you want to check if test are passing, run
+
+``` npm test ```
+
 ## Getting Started
 
 - Clone this repo
