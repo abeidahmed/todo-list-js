@@ -49,3 +49,12 @@ test('does not add todo if todo is already present', () => {
 
   expect(todo.addTodo()).toBe(false);
 });
+
+test('it deletes the todo from the localStorage', () => {
+  initializeTodo({ projects });
+  const todo = new Todo();
+  todo.deleteTodo('coding todo 1');
+
+  const localTodos = JSON.parse(localStorage.getItem('projects'))[0].todos;
+  expect(localTodos.length).toBe(0);
+});
